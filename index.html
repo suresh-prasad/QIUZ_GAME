@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generation Quiz</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+      .quiz-container {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .title-container,
+      .result-container {
+        background-color: red;
+        padding: 10px;
+      }
+      .title,
+      .result {
+        color: white;
+        font-size: 24px;
+        text-align: center;
+      }
+      .question {
+        margin-bottom: 1em;
+      }
+      .answer-btn {
+        background-color: lightgray;
+        border: none;
+        color: black;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 5px;
+        cursor: pointer;
+      }
+      .submit-btn {
+        background-color: red;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 20px 0;
+        cursor: pointer;
+      }
+      .result-image {
+        width: 100%;
+        height: auto;
+      }
+      .image-credit {
+        font-size: 12px;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="quiz-container">
+      <div class="title-container">
+        <h1 class="title">
+          Tell us all about your video game preferences and we’ll tell you what
+          generation you’re from
+        </h1>
+      </div>
+      <form id="quiz-form">
+        <div class="question" id="q1">
+          <p>1. What is your favorite video game console?</p>
+          <button
+            type="button"
+            class="answer-btn"
+            onclick="selectAnswer('q1', 1)"
+          >
+            Atari 2600
+          </button>
+          <button
+            type="button"
+            class="answer-btn"
+            onclick="selectAnswer('q1', 2)"
+          >
+            Nintendo 64
+          </button>
+          <button
+            type="button"
+            class="answer-btn"
+            onclick="selectAnswer('q1', 3)"
+          >
+            Xbox
+          </button>
+          <button
+            type="button"
+            class="answer-btn"
+            onclick="selectAnswer('q1', 4)"
+          >
+            PlayStation 3
+          </button>
+        </div>
+        <div class="question" id="q2">
+          <p>2. What type of game do you like to play the most?</p>
+          <button
+            type="button"
+            class="answer-btn"
+            onclick="selectAnswer('q2', 1)"
+          >
+            Arcade
+          </button>
+          <button
+            type="button"
+            class="answer-btn"
+            onclick="selectAnswer('q2', 2)"
+          >
+            Platformer
+          </button>
+          <button
+            type="button"
+            class="answer-btn"
+            onclick="selectAnswer('q2', 3)"
+          >
+            First-person shooter
+          </button>
+          <button
+            type="button"
+            class="answer-btn"
+            onclick="selectAnswer('q2', 4)"
+          >
+            Battle Royale
+          </button>
+        </div>
+        <div class="question" id="q3">
+          <p>3. Which of these games have you played the most?</p>
+          <button
+            type="button"
+            class="answer-btn"
+            onclick="selectAnswer('q3', 1)"
+          >
+            Pong
+          </button>
+          <button
+            type="button"
+            class="answer-btn"
+            onclick="selectAnswer('q3', 2)"
+          >
+            Super Mario Bros.
+          </button>
+          <button
+            type="button"
+            class="answer-btn"
+            onclick="selectAnswer('q3', 3)"
+          >
+            Grand Theft Auto
+          </button>
+          <button
+            type="button"
+            class="answer-btn"
+            onclick="selectAnswer('q3', 4)"
+          >
+            Fortnite
+          </button>
+        </div>
+        <div class="question" id="q4">
+          <p>4. How do you like to play video games?</p>
+          <button
+            type="button"
+            class="answer-btn"
+            onclick="selectAnswer('q4', 1)"
+          >
+            Arcade
+          </button>
+          <button
+            type="button"
+            class="answer-btn"
+            onclick="selectAnswer('q4', 2)"
+          >
+            Console
+          </button>
+          <button
+            type="button"
+            class="answer-btn"
+            onclick="selectAnswer('q4', 3)"
+          >
+            PC
+          </button>
+          <button
+            type="button"
+            class="answer-btn"
+            onclick="selectAnswer('q4', 4)"
+          >
+            Mobile Device
+          </button>
+        </div>
+        <div class="question" id="q5">
+          <p>5. How do you play video games with friends?</p>
+          <button
+            type="button"
+            class="answer-btn"
+            onclick="selectAnswer('q5', 1)"
+          >
+            I don't play with friends
+          </button>
+          <button
+            type="button"
+            class="answer-btn"
+            onclick="selectAnswer('q5', 2)"
+          >
+            LAN party
+          </button>
+          <button
+            type="button"
+            class="answer-btn"
+            onclick="selectAnswer('q5', 3)"
+          >
+            Split-screen
+          </button>
+          <button
+            type="button"
+            class="answer-btn"
+            onclick="selectAnswer('q5', 4)"
+          >
+            Online
+          </button>
+        </div>
+        <button type="button" class="submit-btn" onclick="submitQuiz()">
+          Submit
+        </button>
+      </form>
+      <div class="result-container">
+        <div class="result" id="result"></div>
+      </div>
+      <img
+        src="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+        alt="Gaming setup"
+        class="result-image"
+      />
+      <div class="image-credit">Photo by Tyler Nix on Unsplash</div>
+    </div>
+    <script>
+      const answers = {};
+
+      function selectAnswer(questionId, value) {
+        answers[questionId] = value;
+        const buttons = document.querySelectorAll(
+          '#' + questionId + ' .answer-btn'
+        );
+        buttons.forEach((button) => {
+          button.style.backgroundColor = 'lightgray';
+          button.style.color = 'black';
+        });
+        const selectedButton = document.querySelector(
+          '#' + questionId + ' .answer-btn:nth-child(' + (value + 1) + ')'
+        );
+        selectedButton.style.backgroundColor = 'red';
+        selectedButton.style.color = 'white';
+      }
+
+      function submitQuiz() {
+        let score = 0;
+        for (let i = 1; i <= 5; i++) {
+          const questionId = 'q' + i;
+          if (answers[questionId]) {
+            score += parseInt(answers[questionId]);
+          }
+        }
+        let generation = '';
+        if (score >= 5 && score <= 9) {
+          generation = "You're a Boomer!";
+        } else if (score >= 10 && score <= 14) {
+          generation = "You're Gen-X!";
+        } else if (score >= 15 && score <= 19) {
+          generation = "You're a Millennial!";
+        } else {
+          generation = "You're Gen-Z!";
+        }
+        document.getElementById('result').innerHTML = generation;
+      }
+    </script>
+  </body>
+</html>
